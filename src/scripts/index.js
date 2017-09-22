@@ -14,6 +14,7 @@ import {
 } from 'react-router-dom';
 
 
+
 class AppInitializer {
 
     templates = {

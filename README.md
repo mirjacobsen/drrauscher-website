@@ -35,3 +35,4 @@ class DataActions {
 		const appUrl = 'http://andreypokrovskiy.com/projects/wp-api'; // Wordpress installation url
 	}
 ```
+# react-wordpress-webpack-stylus
