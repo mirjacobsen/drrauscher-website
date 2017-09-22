@@ -9,8 +9,8 @@ class Home extends React.Component {
         console.log({pageData});
         return (
             <div>
-                <h2 className="test">Homepage template</h2>
-                <h1>{pageData.title.rendered}</h1>
+                
+                <h1 className="header">{pageData.title.rendered}</h1>
 
                 <div dangerouslySetInnerHTML={{__html: pageData.excerpt.rendered}} />
                            </div>

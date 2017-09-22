@@ -9,21 +9,25 @@ class Header extends React.Component {
 
         return (
             <div className="header">
-                <Link to="/" style={{marginRight: '10px'}} >Home</Link>
-
-                {allPages.map((page) => {
-                    if(page.slug != 'home'){
-                       return(
-                            <Link 
-                                key={page.id} 
-                                to={`/${page.slug}`} 
-                                style={{marginRight: '10px'}}
-                            >
-                                {page.title.rendered}
-                            </Link>
-                        )                     
-                   }
-                })}
+                <nav className="navigation">
+                    <ul>
+                        {allPages.map((page) => {
+                            if(page.slug != 'home' && page.title.rendered !== 'home'){
+                               return(
+                                    <li>
+                                        <Link 
+                                            key={page.id} 
+                                            to={`/${page.slug}`} 
+                                            style={{marginRight: '10px'}}
+                                        >
+                                            {page.title.rendered}
+                                        </Link>
+                                    </li>
+                                )                     
+                           }
+                        })}
+                    </ul>
+                </nav>
             </div>
         );
     }
