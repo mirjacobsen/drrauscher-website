@@ -3,6 +3,12 @@
 
 body
 	font-family montserrat
+	line-height 1.5
+
+.page-content
+	display flex
+	flex-wrap wrap
+	justify-content center
 	
 .header
 	display flex
@@ -12,15 +18,49 @@ body
     
 	&__title
 		font-family playfair
+		font-weight normal
 		width 100%
 		font-size 2.5vw
 		display flex
 		justify-content center
-		margin 3vw 0
+		margin 5vw 0 2vw
 		
-.banner__image 
-	width 100%
+.banner 
+	margin-bottom 5vw
+		
+	&__image 
+		width 100%
 
+.page-banner
+	position relative
+	display flex
+	margin-bottom 6vw
+	
+	&__image
+		width 100%
+		height 100%
+	
+	&:after
+		content ''
+		width 100%
+		height 100%
+		background-color rgba(0,0,0,.4)
+		position absolute
+		top 0
+		left 0
+		
+	
+	&__title
+		color white
+		width 100%
+		text-align center
+		top 60%
+		font-family playfair
+		font-weight normal
+		font-size 3vw
+		position absolute
+		z-index 10
+		
 .navigation
 	margin-bottom 3vw
 	
@@ -50,3 +90,119 @@ body
 				position absolute
 				bottom -2px
 				left 0
+				
+.nav-blocks
+	width 90%
+	max-width 1000px
+	justify-content space-around
+	display flex
+	padding-bottom 6vw
+				
+.nav-block
+	flex-basis 30%
+	overflow hidden
+	height 27vw // 90% * .3
+	max-height 300px
+	position relative
+	display flex
+	justify-content center
+	align-items center
+	text-decoration none
+	
+	&__image
+		border 0
+		height 100%
+		position absolute
+		z-index -1
+		transform scale(1.1)
+		transition all .35s ease
+		
+	&__text
+		font-family playfair
+		font-weight normal
+		color white
+		font-size 2.4vw
+		display block
+		z-index 10
+		text-align center
+		padding 10%
+		text-transform uppercase
+	
+	&:after
+		content ''
+		width 100%
+		height 100%
+		position absolute
+		background-color rgba(0,0,0,.4)
+		transition all .35s ease
+		
+	&:hover	
+		.nav-block__image
+			transform scale(1)
+			
+		.nav-block:after
+			background-color rgba(0,0,0,.7)
+			
+
+// Grid?
+
+.intro
+	display flex
+	justify-content space-around
+	padding 5vw
+	background gray
+	flex-wrap wrap
+	width 100%
+	
+	&__text
+		color white
+		font-family playfair
+		font-weight normal
+		line-height 1.75
+		font-size 1.5vw
+		
+		&--large
+			font-size 3vw
+			line-height 1.5
+			padding-bottom 2vw
+			color white
+			font-family playfair
+			font-weight normal
+			width 98%
+			max-width 1000px
+			
+	&__name
+		font-size 1.75vw
+		margin-top 2vw
+			
+	&__link
+		color white
+		
+.columns
+	display flex
+	flex-wrap wrap
+	justify-content space-around
+	width 90%
+	max-width 1000px
+	
+.column-3 
+	width 31%
+	max-width 300px
+	
+.column-2
+	width 48%
+	max-width 425px
+
+.list
+	margin-bottom 6vw
+	padding-left 10px
+	
+	&__item
+		line-height 2
+		list-style none
+		padding-bottom 10px
+		
+		&__title
+			font-weight bold
+.text 
+	margin-bottom 2vw

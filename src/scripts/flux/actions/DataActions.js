@@ -8,7 +8,7 @@ class DataActions {
         const appUrl = 'http://localhost/wordpress/'; // Wordpress installation url
         // const appUrl = 'http://localhost:8888/wordpress/'; // Wordpress installation url
 
-        this.pagesEndPoint = `${appUrl}/wp-json/wp/v2/pages`; // Endpoint for getting Wordpress Pages
+        this.pagesEndPoint = `${appUrl}/wp-json/wp/v2/pages/?per_page=100`; // Endpoint for getting Wordpress Pages
         this.postsEndPoint = `${appUrl}/wp-json/wp/v2/posts`; // Endpoint for getting Wordpress Posts
     }
 
