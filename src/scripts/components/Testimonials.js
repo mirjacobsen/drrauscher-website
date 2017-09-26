@@ -1,10 +1,10 @@
 import DataStore from 'flux/stores/DataStore.js'
 
-class Contact extends React.Component {
+class Testimonials extends React.Component {
     render() {
-        let pageData = DataStore.getPageBySlug('contact');
+        let pageData = DataStore.getPageBySlug('testimonials');
 
-        return (
+       return (
             <div className="page-content">
                 <div className="page-banner">
                     <img src="http://localhost/wordpress/wp-content/uploads/2017/09/alexa-rauscher-banner.jpg" alt={pageData.title.rendered} className="page-banner__image"/>
@@ -17,4 +17,4 @@ class Contact extends React.Component {
     }
 }
 
-export default Contact;
+export default Testimonials;

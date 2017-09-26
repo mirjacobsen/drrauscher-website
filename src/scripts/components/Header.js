@@ -1,5 +1,7 @@
 import {Link} from 'react-router-dom';
-import DataStore from 'flux/stores/DataStore.js'
+import DataStore from 'flux/stores/DataStore.js';
+import Dropdown   from 'components/Dropdown.js';
+import '../../css/style.css';
 
 class Header extends React.Component {   
    
@@ -7,24 +9,54 @@ class Header extends React.Component {
         let allPages = DataStore.getAllPages();
         allPages = _.sortBy(allPages, [function(page) { return page.menu_order; }]); // Sort pages by order
 
-        return (
-            <div className="header">
-                <Link to="/" style={{marginRight: '10px'}} >Home</Link>
+        let pageBanners = DataStore.getAllPages();
+        console.log( pageBanners );
 
-                {allPages.map((page) => {
-                    if(page.slug != 'home'){
-                       return(
-                            <Link 
-                                key={page.id} 
-                                to={`/${page.slug}`} 
-                                style={{marginRight: '10px'}}
-                            >
-                                {page.title.rendered}
-                            </Link>
-                        )                     
-                   }
-                })}
-            </div>
+        return (
+            <header className="header">
+                <h1 className="header__title">Dr. Alexa Rauscher, ND BSc</h1>
+                <nav className="navigation">
+                    <ul className="navigation__list">
+                        {allPages.map((page) => {
+                            if(page.slug !== 'home' && page.parent == 0){
+                               return(
+                                    <li className="navigation__list-item" key={page.id}>
+                                        <Link
+                                            to={`/${page.slug}`}
+                                            className="navigation__link"
+                                        >
+                                            {page.title.rendered}
+                                        </Link>
+                                        <Dropdown id={page.id} />
+                                    </li>      
+                                )                     
+                           }
+
+                        // //dropdown
+                        //    if(page.parent == 34){
+                        //        return(
+                        //             <div className="dropdown">
+                        //                 <ul className="navigation__list">
+                        //                     <li className="navigation__list-item">
+                        //                         <Link
+                        //                             key={page.id}
+                        //                             to={`/${page.slug}`}
+                        //                             className="navigation__link"
+                        //                         >
+                        //                             {page.title.rendered}
+                        //                         </Link>
+                        //                     </li>
+                        //                 </ul>
+                        //             </div>
+                                   
+                        //         )                     
+                        //    }
+
+                        })}
+                    </ul>
+                </nav>
+
+            </header>
         );
     }
 }

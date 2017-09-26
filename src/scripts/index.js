@@ -1,10 +1,20 @@
-import {render}             from 'react-dom';
-import DataActions          from 'flux/actions/DataActions.js';
+import {render}                 from 'react-dom';
+import DataActions              from 'flux/actions/DataActions.js';
 
-import Home                 from 'components/Home.js';
-import About                from 'components/About.js';
-import Contact              from 'components/Contact.js';
-import Header               from 'components/Header.js';
+import Home                     from 'components/Home.js';
+import About                    from 'components/About.js';
+import Contact                  from 'components/Contact.js';
+import ConditionsAndTreatments  from 'components/ConditionsAndTreatments.js';
+import Conditions               from 'components/Conditions.js';
+import Treatments               from 'components/Treatments.js';
+import AboutNaturopathicMedicine               from 'components/AboutNaturopathicMedicine.js';
+import NaturopathicPhilosophies               from 'components/NaturopathicPhilosophies.js';
+import Faq               from 'components/Faq.js';
+import Bioenergetics               from 'components/Bioenergetics.js';
+import Testimonials               from 'components/Testimonials.js';
+import TBM               from 'components/TBM.js';
+import Header                   from 'components/Header.js';
+import Footer                   from 'components/Footer.js';
 
 import {
     BrowserRouter as Router,
@@ -18,8 +28,18 @@ import {
 class AppInitializer {
 
     templates = {
-        'about': About,
-        'contact': Contact
+        'about-dr-alexa-rauscher': About,
+        'contact': Contact,
+        'conditions-and-treatments': ConditionsAndTreatments,
+        'conditions': Conditions,
+        'treatments': Treatments,
+        'about-naturopathic-medicine': AboutNaturopathicMedicine,
+        'naturopathic-philosophies': NaturopathicPhilosophies,
+        'faq': Faq,
+        'bioenergetics-bie': Bioenergetics,
+        'total-body-modification-tbm': TBM,
+        'testimonials': Testimonials,
+
     }
 
     buildRoutes(data){
@@ -48,6 +68,7 @@ class AppInitializer {
                             {this.buildRoutes(response)}
                             <Route render={() => { return <Redirect to="/" /> }} />
                         </Switch> 
+                        <Footer />
                     </div>
                 </Router>
 

@@ -1,8 +1,8 @@
 import DataStore from 'flux/stores/DataStore.js'
 
-class Contact extends React.Component {
+class TBM extends React.Component {
     render() {
-        let pageData = DataStore.getPageBySlug('contact');
+        let pageData = DataStore.getPageBySlug('total-body-modification-tbm');
 
         return (
             <div className="page-content">
@@ -11,10 +11,10 @@ class Contact extends React.Component {
                     <h1 className="page-banner__title">{pageData.title.rendered}</h1>
                 </div>
 
-                <div dangerouslySetInnerHTML={{__html: pageData.content.rendered}} className="columns" />
+                <div dangerouslySetInnerHTML={{__html: pageData.content.rendered}} className="column" />
             </div>
         );
     }
 }
 
-export default Contact;
+export default TBM;
