@@ -61,6 +61,40 @@ body
 		position absolute
 		z-index 10
 		
+	
+.dropdown
+	position absolute
+	top 25px
+	background-color white
+	box-shadow 0 50px 100px rgba(50,50,93,.1), 0 15px 35px rgba(50,50,93,.15), 0 5px 15px rgba(0,0,0,.1);
+	width 100%
+	max-height 0
+	opacity 0
+	transition all .5s ease
+	z-index 100
+	
+	&:hover
+		max-height 400px
+		opacity 1
+	
+	.navigation__list
+		flex-direction column
+		padding 0
+		
+		&-item
+			&:hover
+				background pink
+				
+				.navigation__link
+					color white
+
+					&:after
+						height 0
+			
+	.navigation__link
+		padding 1vw
+		display block
+			
 .navigation
 	margin-bottom 3vw
 	
@@ -70,18 +104,24 @@ body
 		justify-content center
 		font-size 1vw
 		text-transform uppercase
+		padding-left 0
 		
 		&-item
 			list-style none
+			position relative
 			
 	&__link
 		color black
 		text-decoration none
-		padding .5vw
+		padding .5vw 3vw
 		position relative
 		
-		//TODO: add transition if not using JS dropdown effect for this	
+		//TODO: make hover stay open
 		&:hover
+			+ .dropdown
+				max-height 400px
+				opacity 1
+
 			&:after
 				content ''
 				width 100%
@@ -91,6 +131,31 @@ body
 				bottom -2px
 				left 0
 				
+.footer
+	background pink
+	padding 6vw
+	
+	.navigation__list
+		flex-direction column
+	
+	.navigation__link
+		color white
+		font-family playfair
+		
+	.dropdown
+		max-height initial
+		opacity 1
+		position relative
+		top 0
+		box-shadow none
+		background-color transparent
+		width auto
+			
+			.navigation__link
+				font-family montserrat
+				
+
+
 .nav-blocks
 	width 90%
 	max-width 1000px
@@ -178,12 +243,20 @@ body
 	&__link
 		color white
 		
+.column
+	display flex
+	flex-wrap wrap
+	width 90%
+	max-width 1000px
+	margin-bottom 8vw
+		
 .columns
 	display flex
 	flex-wrap wrap
 	justify-content space-around
 	width 90%
 	max-width 1000px
+	margin-bottom 8vw
 	
 .column-3 
 	width 31%
@@ -206,3 +279,35 @@ body
 			font-weight bold
 .text 
 	margin-bottom 2vw
+	
+.footer
+	width 100%
+	display flex
+	justify-content space-around
+	
+svg
+	width 35vw
+	margin-left -8vw
+	
+// TODO get pip to work on scroll	
+// .pip
+// 	transform translate(0,-25px)
+// 	transition transform .35s ease
+	
+// 	&.scrolledTo
+// 		transform translate(0,0)
+
+
+//about page 
+
+.about__image,
+.image
+	width 100%
+	padding-bottom 3vw
+	
+.text-link
+	color black
+	
+	&:hover
+		color green
+

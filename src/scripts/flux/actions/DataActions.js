@@ -5,7 +5,7 @@ class DataActions {
 
     constructor() {
         // const appUrl = 'http://andreypokrovskiy.com/projects/wp-api-react'; // Wordpress installation url
-        const appUrl = 'http://localhost/wordpress/'; // Wordpress installation url
+        const appUrl = 'https://api.alexarauschernaturopath.com/'; // Wordpress installation url
         // const appUrl = 'http://localhost:8888/wordpress/'; // Wordpress installation url
 
         this.pagesEndPoint = `${appUrl}/wp-json/wp/v2/pages/?per_page=100`; // Endpoint for getting Wordpress Pages

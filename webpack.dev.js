@@ -38,10 +38,14 @@ module.exports = {
 				],
 				loader: ['react-hot-loader']
 			},
-      		{ 
-      			test: /\.css$/, 
-      			loader: "style-loader!css-loader" 
-      		},
+  		{ 
+  			test: /\.css$/, 
+  			loader: ["style-loader!css-loader"]
+  		},
+  		{
+        test: /\.svg$/,
+        loader: 'svg-inline-loader?classPrefix'
+    	},
 			{
 				loader: "babel-loader",
 

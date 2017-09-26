@@ -14,6 +14,7 @@ import Bioenergetics               from 'components/Bioenergetics.js';
 import Testimonials               from 'components/Testimonials.js';
 import TBM               from 'components/TBM.js';
 import Header                   from 'components/Header.js';
+import Footer                   from 'components/Footer.js';
 
 import {
     BrowserRouter as Router,
@@ -27,7 +28,7 @@ import {
 class AppInitializer {
 
     templates = {
-        'about': About,
+        'about-dr-alexa-rauscher': About,
         'contact': Contact,
         'conditions-and-treatments': ConditionsAndTreatments,
         'conditions': Conditions,
@@ -67,6 +68,7 @@ class AppInitializer {
                             {this.buildRoutes(response)}
                             <Route render={() => { return <Redirect to="/" /> }} />
                         </Switch> 
+                        <Footer />
                     </div>
                 </Router>
 

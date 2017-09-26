@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
 import DataStore from 'flux/stores/DataStore.js';
+import Dropdown   from 'components/Dropdown.js';
 import '../../css/style.css';
 
 class Header extends React.Component {   
@@ -19,17 +20,38 @@ class Header extends React.Component {
                         {allPages.map((page) => {
                             if(page.slug !== 'home' && page.parent == 0){
                                return(
-                                    <li className="navigation__list-item">
+                                    <li className="navigation__list-item" key={page.id}>
                                         <Link
-                                            key={page.id}
                                             to={`/${page.slug}`}
                                             className="navigation__link"
                                         >
                                             {page.title.rendered}
                                         </Link>
-                                  </li>
+                                        <Dropdown id={page.id} />
+                                    </li>      
                                 )                     
                            }
+
+                        // //dropdown
+                        //    if(page.parent == 34){
+                        //        return(
+                        //             <div className="dropdown">
+                        //                 <ul className="navigation__list">
+                        //                     <li className="navigation__list-item">
+                        //                         <Link
+                        //                             key={page.id}
+                        //                             to={`/${page.slug}`}
+                        //                             className="navigation__link"
+                        //                         >
+                        //                             {page.title.rendered}
+                        //                         </Link>
+                        //                     </li>
+                        //                 </ul>
+                        //             </div>
+                                   
+                        //         )                     
+                        //    }
+
                         })}
                     </ul>
                 </nav>
