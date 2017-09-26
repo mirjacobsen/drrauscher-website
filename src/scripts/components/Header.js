@@ -32,26 +32,6 @@ class Header extends React.Component {
                                 )                     
                            }
 
-                        // //dropdown
-                        //    if(page.parent == 34){
-                        //        return(
-                        //             <div className="dropdown">
-                        //                 <ul className="navigation__list">
-                        //                     <li className="navigation__list-item">
-                        //                         <Link
-                        //                             key={page.id}
-                        //                             to={`/${page.slug}`}
-                        //                             className="navigation__link"
-                        //                         >
-                        //                             {page.title.rendered}
-                        //                         </Link>
-                        //                     </li>
-                        //                 </ul>
-                        //             </div>
-                                   
-                        //         )                     
-                        //    }
-
                         })}
                     </ul>
                 </nav>

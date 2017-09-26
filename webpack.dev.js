@@ -38,14 +38,17 @@ module.exports = {
 				],
 				loader: ['react-hot-loader']
 			},
-  		{ 
-  			test: /\.css$/, 
-  			loader: ["style-loader!css-loader"]
-  		},
-  		{
-        test: /\.svg$/,
-        loader: 'svg-inline-loader?classPrefix'
-    	},
+			{ 
+				test: /\.css$/,
+				use: [
+					{ loader: "style-loader" },
+					{ loader: "css-loader" }
+				]
+			},
+			{
+				test: /\.svg$/,
+				loader: 'svg-inline-loader?classPrefix'
+			},
 			{
 				loader: "babel-loader",
 
@@ -76,10 +79,10 @@ module.exports = {
 			_: 'lodash'
 		}),
 
-	    new HtmlWebpackPlugin({
-	        filename: 'index.html',
-	        template: './src/index.html',
-	        hash: false
-	    })
+			new HtmlWebpackPlugin({
+					filename: 'index.html',
+					template: './src/index.html',
+					hash: false
+			})
 	]
 }
