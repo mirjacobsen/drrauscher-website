@@ -35,17 +35,21 @@ class Header extends React.Component {
         }
     }
 
-    toggleDropdown() {
+    toggleDropdown(e) {
+        console.log(e.target);
+        e.preventDefault();
        if ( !this.state.isDropdownOpen ) {
           this.setState({
             isDropdownOpen: true
           })
+            e.target.nextSibling.classList.add('open');
         } 
 
         else {
             this.setState({
                 isDropdownOpen: false
             })
+            e.target.nextSibling.classList.remove('open');
         }
     }
 
@@ -114,11 +118,11 @@ class Header extends React.Component {
                                             to={`/${page.slug}`}
                                             className=
                                             {this.hasDropdownChildren(page) ? 'navigation__link navigation__link--dropdown' : 'navigation__link'}
-                                            onClick={() => this.toggleDropdown()} 
+                                            onClick={(e) => this.toggleDropdown(e)} 
                                         >
                                             {page.title.rendered}
                                         </Link>
-                                        <Dropdown id={page.id} hasDropdownChildren={ this.hasDropdownChildren(page)} isDropdownOpen={this.state.isDropdownOpen} />
+                                        <Dropdown id={page.id} key={page.id} hasDropdownChildren={ this.hasDropdownChildren(page)} isDropdownOpen={this.state.isDropdownOpen} />
                                     </li>      
                                 )                     
                            }
