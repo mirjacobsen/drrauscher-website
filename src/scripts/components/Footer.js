@@ -28,30 +28,28 @@ class Footer extends React.Component {
         let allPages = DataStore.getAllPages();
         allPages = _.sortBy(allPages, [function(page) { return page.menu_order; }]); // Sort pages by order
 
-       
-
-        
-
         return (
             <footer className="footer">
                 <div className="column-3">
-                    <InlineSVG src={require("../svg/map-white.svg")} />
+                    <InlineSVG src={require("../svg/map-white.svg")} className="footer__map"/>
                 </div>
                 <div className="column-3">
                     <div className="footer-contact">
-                        Office Hours:
-                        Tuesday: 11:00am-8:00pm
-                        Wednesday: 9:00am-6:00pm
-                        Friday: 9:00am-6:00pm
-                        Saturday 9:00am-4:00pm
-
-                        Lonsdale Naturopathic Clinic
-                        404-1200 Lonsdale Avenue
-                        North Vancouver, BC   V7M 3H6
-
-                        Phone: 604.987.1418 | Fax: 604.960.9648 
-                        Email: dr.rauscher.nd@gmail.com
-
+                        <p className="text">Office Hours:</p>
+                        <ul className="list">
+                            <li className="list__item"><span class="list__item__title">Tuesday:</span> 11:00am-8:00pm</li>
+                            <li className="list__item"><span class="list__item__title">Wednesday:</span> 9:00am-6:00pm</li>
+                            <li className="list__item"><span class="list__item__title">Friday:</span> 9:00am-6:00pm</li>
+                            <li className="list__item"><span class="list__item__title">Saturday</span> 9:00am-4:00pm</li>
+                        </ul>
+                        <p className="text">
+                            Lonsdale Naturopathic Clinic <br />
+                            404-1200 Lonsdale Avenue<br />
+                            North Vancouver, BC   V7M 3H6<br />
+                            Phone: <a href="tel:604.987.1418">604.987.1418</a> | Fax: 604.960.9648<br /> 
+                            Email: <a href="mailto:dr.rauscher.nd@gmail.com">dr.rauscher.nd@gmail.com</a>
+                        </p>
+                        
                     </div>
 
                 </div>
