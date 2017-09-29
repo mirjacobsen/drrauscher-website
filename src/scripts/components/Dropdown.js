@@ -1,37 +1,44 @@
 import {Link} from 'react-router-dom';
 import DataStore from 'flux/stores/DataStore.js';
 
-class Dropdown extends React.Component {   
+class Dropdown extends React.Component { 
    
     render() {
-        let allPages = DataStore.getAllPages();
+        const allPages = DataStore.getAllPages();
         const props = this.props;
-        console.log('props' + props);
+        // let parent = this.props.parent;
+        // console.log('props' + props);
+        const hasDropdownChildren = this.props.hasDropdownChildren;
 
-        return (
-            <div className="dropdown" >
-                <ul className="navigation__list" id={this.props.id}>
+        if (!hasDropdownChildren) {
+            return null;
+        } else {
 
-                    {allPages.map((page) => {
-                        if(page.parent == this.props.id){
-                           return(
-                                <li className="navigation__list-item" key={page.id}>
-                                    <Link
-                                        
-                                        to={`/${page.slug}`}
-                                        className="navigation__link"
-                                    >
-                                        {page.title.rendered}
-                                    </Link>
-                                
-                                </li>      
-                            )                     
-                        }
-                    })}
-                </ul>
-            </div>
+            return (
+                <div className="dropdown">
+                    <ul className="navigation__list" id={this.props.id}>
 
-        );
+                        {allPages.map((page) => {
+                            if(page.parent == this.props.id){
+                               return(
+                                    <li className="navigation__list-item" key={page.id}>
+                                        <Link
+                                            
+                                            to={`/${page.slug}`}
+                                            className="navigation__link"
+                                        >
+                                            {page.title.rendered}
+                                        </Link>
+                                    
+                                    </li>      
+                                )                     
+                            }
+                        })}
+                    </ul>
+                </div>
+            );
+        }
+
     }
 }
 
