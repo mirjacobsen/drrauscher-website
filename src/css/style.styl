@@ -3,44 +3,20 @@
 
 body
 	font-family montserrat
-	line-height 1.5
+	line-height 2
+	
+h1,
+h2,
+h3
+	font-family playfair
+	
+a 
+	color inherit
 
 .page-content
 	display flex
 	flex-wrap wrap
 	justify-content center
-
-.intro
-	background gray
-	display flex
-	flex-wrap wrap
-	justify-content space-around
-	padding 5vw
-	width 100%
-	
-	&__text
-		color white
-		font-family playfair
-		font-size 1.5vw
-		font-weight normal
-		line-height 1.75
-		
-		&--large
-			color white
-			font-family playfair
-			font-size 3vw
-			font-weight normal
-			line-height 1.5
-			max-width 1000px
-			padding-bottom 2vw
-			width 98%
-			
-	&__name
-		font-size 1.75vw
-		margin-top 2vw
-			
-	&__link
-		color white
 
 .list
 	margin-bottom 6vw
@@ -54,7 +30,7 @@ body
 		&__title
 			font-weight bold
 .text 
-	margin-bottom 2vw
+	margin-bottom 5vw
 	
 
 .about__image, //remove this class
@@ -68,3 +44,9 @@ body
 	&:hover
 		color green
 
+@media all and (min-width: 980px)
+	body 
+		line-height 1.5
+	
+	.text
+		margin-bottom 2vw

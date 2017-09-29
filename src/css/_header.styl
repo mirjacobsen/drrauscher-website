@@ -12,12 +12,20 @@
 		display flex
 		justify-content center
 		margin 5vw 0 2vw
+	
+	&__link
+		text-decoration none
 		
-.banner 
-	margin-bottom 5vw
-		
-	&__image 
-		width 100%
+.banner
+	min-height 25vh
+	max-height 25vw
+	margin-bottom 5vh
+	max-width 100%
+	order 1
+
+	&__image
+		height 100%
+		width auto
 
 .page-banner
 	position relative
@@ -42,9 +50,24 @@
 		color white
 		width 100%
 		text-align center
-		top 60%
+		top 20%
 		font-family playfair
 		font-weight normal
-		font-size 3vw
+		font-size 5vw
 		position absolute
 		z-index 10
+		
+@media all and (min-width: 980px)
+
+	.banner 
+		margin-bottom 5vw
+		height auto
+			
+		&__image 
+			width 100%
+			height auto
+
+
+	.page-banner__title
+		top 60%
+		font-size 3vw

@@ -1,13 +1,25 @@
+
+
 .navigation
 	margin-bottom 3vw
+	transform translateX(-100vw)
+	// transition all .5s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+	transition all .4s ease-in-out
+	height 100vh
+	width 100%
+	background white
+	position fixed
+	top 0
+	z-index 100000
 	
 	&__list
 		display flex
-		font-size 1vw
 		justify-content center
 		padding-left 0
 		text-transform uppercase
 		width 100%
+		flex-direction column
+		font-size 4vw
 		
 		&-item
 			list-style none
@@ -19,49 +31,123 @@
 		position relative
 		text-decoration none
 		
-		&:hover
-			+ .dropdown
-				max-height 400px
-				opacity 1
+		// &:hover
+		// 	+ .dropdown
+		// 		max-height 400px
+		// 		opacity 1
 
-			&:after
-				background pink
-				bottom -2px
-				content ''
-				height 3px
-				left 0
-				position absolute
-				width 100%
+		// 	&:after
+		// 		background pink
+		// 		bottom -2px
+		// 		content ''
+		// 		height 3px
+		// 		left 0
+		// 		position absolute
+		// 		width 100%
 				
+	&.open
+		transform translateX(0)
 
+		
+	&-button
+		position fixed
+		top 20px
+		right 25px
+		border 0
+		background 0
+		z-index 100001
+		
+		&__text
+			opacity 0
+			width 1px 
+			height 1px 
+			font-size 1px
+		
+		&:before
+			content ""
+			position absolute
+			left 0
+			width 25px
+			height 4px
+			border-top 12px double lightGreen
+			transform rotate(0)
+			transition all 0.35s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+			
+		&:after
+			content ""
+			position absolute
+			left 0
+			top 13px
+			width 25px
+			height 4px
+			border-bottom 4px solid lightGreen
+			transform rotate(0)
+			transition all 0.35s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+			
+		&.open
+			&:before
+				transform rotate(45deg)
+				border-top 4px solid lightGreen
+				top 8px
+				
+			&:after
+				transform rotate(-45deg)
+				top 5px
+			
+	
 .dropdown
 	background-color white
-	box-shadow boxShadow
 	max-height 0
 	opacity 0
-	position absolute
-	top 25px
+	position relative
+	top 0
 	transition all .5s ease
 	width 100%
-	z-index 100
+	z-index -1
 	
-	&:hover
-		max-height 400px
+	&.open
+		max-height 1000px
 		opacity 1
+		z-index 1
 	
-	.navigation__list
-		flex-direction column
-		padding 0
+	.navigation
+		&__list
+			flex-direction column
+			padding-left 5vw
 		
-		&-item:hover
-			background pink
+		&__link
+			padding 1vw
+			display block
 			
-			.navigation__link
-				color white
+@media all and (min-width: 980px) 
 
-				&:after
-					height 0
+	.navigation
+		&__list
+			font-size 1vw
+
+	.dropdown
+		box-shadow boxShadow
+		position absolute
+		top 25px
+		width 100%
+		
+		&:hover
+			max-height 400px
+			opacity 1
+			z-index 100
+		
+		.navigation__list
+			padding 0
 			
-	.navigation__link
-		padding 1vw
-		display block
+			&-item:hover
+				background pink
+				
+				.navigation__link
+					color white
+
+					&:after
+						height 0
+				
+		.navigation__link
+			padding 1vw
+			display block

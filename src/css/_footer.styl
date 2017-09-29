@@ -1,12 +1,44 @@
+@require './_variables.styl'
+
 .footer
-	background pink
+	background lightGreen
 	display flex
 	justify-content space-around
+	flex-wrap wrap
 	padding 6vw
 	width 100%
+	order 20
+	
+	&__navigation
+		order 1
+		border-bottom 1px solid white
+		
+	&__contact
+		order 5
+		color white
+		font-size 3.5vw
+		padding-bottom 10vw
+		
+		h3
+			text-transform uppercase
+			
+		.link 
+			color white
+		
+		.list
+			border-bottom 1px solid white
+			padding-bottom 4vw
+			
+			&__item
+				display flex
+				justify-content space-between
+		
+	&__map
+		order 10
 	
 	.navigation__list
 		flex-direction column
+		font-size 4vw
 	
 	.navigation__link
 		color white
@@ -20,14 +52,18 @@
 		position relative
 		top 0
 		width auto
+		
+		.navigation__list
+			padding-left 8vw
 			
 		.navigation__link
 			font-family montserrat
-
-	svg,
-	&__map
-		width 35vw
-		margin-left -8vw
+			font-size 3.5vw
+			text-transform: initial;
+	
+	svg
+		width 130%
+		margin-left -15%
 	
 // TODO get pip to work on scroll	
 // .pip
@@ -36,3 +72,21 @@
 	
 // 	&.scrolledTo
 // 		transform translate(0,0)
+
+@media all and (min-width: 980px)
+	.footer
+		flex-wrap nowrap
+		
+		svg,
+		&__map
+			width 35vw
+			margin-left -8vw
+			
+		.navigation__link:hover
+			text-decoration underline
+			
+		&__navigation
+			border-bottom 0
+			
+		&__contact
+			padding-bottom 0

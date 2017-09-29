@@ -32,7 +32,7 @@ class AppInitializer {
         'contact': Contact,
         'conditions-and-treatments': ConditionsAndTreatments,
         'conditions': Conditions,
-        'treatments': Treatments,
+        'treatment-modalities': Treatments,
         'about-naturopathic-medicine': AboutNaturopathicMedicine,
         'naturopathic-philosophies': NaturopathicPhilosophies,
         'faq': Faq,

@@ -3,7 +3,49 @@ import DataStore from 'flux/stores/DataStore.js';
 import Dropdown   from 'components/Dropdown.js';
 import '../../css/style.css';
 
-class Header extends React.Component {   
+class Header extends React.Component {  
+
+    constructor() {
+        super();
+        this.toggleNavigation = this.toggleNavigation.bind(this);
+        this.toggleDropdown = this.toggleDropdown.bind(this);
+
+        //get Initial state
+        this.state= {
+          isNavigationOpen: false,
+          navigationButtonText: 'Open',
+          isDropdownOpen: false
+        }
+    } 
+
+    toggleNavigation() {
+       if ( !this.state.isNavigationOpen ) {
+          this.setState({
+            isNavigationOpen: true,
+            navigationButtonText: 'Close'
+          })
+        } 
+
+        else {
+            this.setState({
+                isNavigationOpen: false
+            })
+        }
+    }
+
+    toggleDropdown() {
+       if ( !this.state.isDropdownOpen ) {
+          this.setState({
+            isDropdownOpen: true
+          })
+        } 
+
+        else {
+            this.setState({
+                isDropdownOpen: false
+            })
+        }
+    }
    
     render() {
         let allPages = DataStore.getAllPages();
@@ -14,8 +56,16 @@ class Header extends React.Component {
 
         return (
             <header className="header">
-                <h1 className="header__title">Dr. Alexa Rauscher, ND BSc</h1>
-                <nav className="navigation">
+                <h1 className="header__title">
+                    <Link to="/" className="header__link">Dr. Alexa Rauscher, ND BSc </Link>
+                </h1>
+                <button 
+                    className={this.state.isNavigationOpen ? 'navigation-button open' : 'navigation-button'} 
+                    onClick={() => this.toggleNavigation()} >
+                    <span className="navigation-button__text">{this.state.navigationButtonText} Menu</span>
+
+                </button>
+                <nav className={this.state.isNavigationOpen ? 'navigation open' : 'navigation'}>
                     <ul className="navigation__list">
                         {allPages.map((page) => {
                             if(page.slug !== 'home' && page.parent == 0){
