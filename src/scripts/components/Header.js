@@ -10,6 +10,7 @@ class Header extends React.Component {
         this.toggleNavigation = this.toggleNavigation.bind(this);
         this.toggleDropdown = this.toggleDropdown.bind(this);
         this.hasDropdownChildren = this.hasDropdownChildren.bind(this);
+        this.mobileDropdownOpen = this.mobileDropdownOpen.bind(this);
 
         //get Initial state
         this.state= {
@@ -50,13 +51,38 @@ class Header extends React.Component {
 
     hasDropdownChildren(page) {
         // TODO: figure out a more reusable way to do this
-        if (page.id == 7 || page.id == 25 || page.id == 27) {
-            return false;
-        } else {
+        const noChildren = page.id == 7 || page.id == 25 || page.id == 27;
 
-             return true;
+        if (!noChildren) {
+            return true;
+        } else {
+            return false;
         }
     } 
+
+    hasDropdown(page) {
+        // TODO: figure out a more reusable way to do this
+        const noChildren = page.id == 7 || page.id == 25 || page.id == 27;
+
+        if (!noChildren) {
+            return true;
+        } else {
+            return false;
+        }
+    } 
+
+    mobileDropdownOpen(e) {
+        e.preventDefault();
+        console.log(e);
+        const hasDropdown = e.target.classList.contains('navigation__link--dropdown');
+        // console.log(hasDropdown);
+
+        if (hasDropdown) {
+            // add open class to dropdown
+        } else {
+            // go to the target
+        }
+    }
    
     render() {
         let allPages = DataStore.getAllPages();
@@ -83,15 +109,16 @@ class Header extends React.Component {
                         {allPages.map((page) => {
                             if(page.slug !== 'home' && page.parent == 0){
                                return(
-                                    <li className="navigation__list-item" key={page.id}>
+                                    <li className="navigation__list-item" key={page.id} id={page.id}>
                                         <Link
                                             to={`/${page.slug}`}
-                                            className="navigation__link"
+                                            className=
+                                            {this.hasDropdownChildren(page) ? 'navigation__link navigation__link--dropdown' : 'navigation__link'}
+                                            onClick={() => this.toggleDropdown()} 
                                         >
                                             {page.title.rendered}
                                         </Link>
-                                        <Dropdown id={page.id} hasDropdownChildren={ this.hasDropdownChildren(page)} />
-
+                                        <Dropdown id={page.id} hasDropdownChildren={ this.hasDropdownChildren(page)} isDropdownOpen={this.state.isDropdownOpen} />
                                     </li>      
                                 )                     
                            }

@@ -5,17 +5,17 @@ class Dropdown extends React.Component {
    
     render() {
         const allPages = DataStore.getAllPages();
-        const props = this.props;
+        // const props = this.props;
         // let parent = this.props.parent;
         // console.log('props' + props);
-        const hasDropdownChildren = this.props.hasDropdownChildren;
+        const { hasDropdownChildren, isDropdownOpen} = this.props;
 
         if (!hasDropdownChildren) {
             return null;
         } else {
 
             return (
-                <div className="dropdown">
+                <div className={isDropdownOpen ? 'dropdown open' : 'dropdown'}>
                     <ul className="navigation__list" id={this.props.id}>
 
                         {allPages.map((page) => {
