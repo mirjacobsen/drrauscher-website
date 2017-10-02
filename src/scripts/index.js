@@ -1,21 +1,23 @@
+import "babel-polyfill";
 import {render}                 from 'react-dom';
 import DataActions              from 'flux/actions/DataActions.js';
 
-import Home                     from 'components/Home.js';
-import About                    from 'components/About.js';
-import Contact                  from 'components/Contact.js';
-import ConditionsAndTreatments  from 'components/ConditionsAndTreatments.js';
-import Conditions               from 'components/Conditions.js';
-import Treatments               from 'components/Treatments.js';
-import AboutNaturopathicMedicine               from 'components/AboutNaturopathicMedicine.js';
-import NaturopathicPhilosophies               from 'components/NaturopathicPhilosophies.js';
-import Faq               from 'components/Faq.js';
-import Bioenergetics               from 'components/Bioenergetics.js';
-import Testimonials               from 'components/Testimonials.js';
-import TBM               from 'components/TBM.js';
-import Header                   from 'components/Header.js';
-import Footer                   from 'components/Footer.js';
-import Copyright                   from 'components/Copyright.js';
+
+import Home                         from 'components/Home.js';
+import About                        from 'components/About.js';
+import Contact                      from 'components/Contact.js';
+import ConditionsAndTreatments      from 'components/ConditionsAndTreatments.js';
+import Conditions                   from 'components/Conditions.js';
+import Treatments                   from 'components/Treatments.js';
+import AboutNaturopathicMedicine    from 'components/AboutNaturopathicMedicine.js';
+import NaturopathicPhilosophies     from 'components/NaturopathicPhilosophies.js';
+import Faq                          from 'components/Faq.js';
+import Bioenergetics                from 'components/Bioenergetics.js';
+import Testimonials                 from 'components/Testimonials.js';
+import TBM                          from 'components/TBM.js';
+import Header                       from 'components/Header.js';
+import Footer                       from 'components/Footer.js';
+import Copyright                    from 'components/Copyright.js';
 
 import {
     BrowserRouter as Router,
@@ -23,8 +25,6 @@ import {
     Redirect,
     Switch
 } from 'react-router-dom';
-
-
 
 class AppInitializer {
 
@@ -47,6 +47,7 @@ class AppInitializer {
     }
 
     getParentSlugForUrl() {
+        //TODO: add this in for URL
         return data.pages.map((page, i) => {
             console.log(page);
             return (
@@ -54,6 +55,7 @@ class AppInitializer {
             )
         })
     }
+
 
     buildRoutes(data){
         return data.pages.map((page, i) => {

@@ -1,5 +1,5 @@
-var webpack  			= require('webpack');
-var path				= require('path');
+var webpack  						= require('webpack');
+var path								= require('path');
 var HtmlWebpackPlugin 	= require('html-webpack-plugin');
 
 module.exports = {	
@@ -8,6 +8,7 @@ module.exports = {
 		historyApiFallback: true, // This will make the server understand "/some-link" routs instead of "/#/some-link"
 	},
 	entry: [
+		'babel-polyfill',
 		'./src/scripts' // This is where Webpack will be looking for the entry index.js file
 	],
 	output: {

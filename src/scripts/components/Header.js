@@ -27,6 +27,7 @@ class Header extends React.Component {
       window.scrollTo(0, 0)
     }
 
+
     // TODO: set isSmallScreen based on screen size
 
     toggleNavigation() {
@@ -51,7 +52,7 @@ class Header extends React.Component {
         e.preventDefault();
 
         if ( !this.state.isDropdownOpen ) {
-            e.target.closest('.link-wrap').nextSibling.classList.add('open');
+            e.target.parentElement.nextSibling.classList.add('open');
 
             //TODO: add a second class and delay the opacity transition?
             this.setState({
@@ -61,7 +62,7 @@ class Header extends React.Component {
         } 
 
         else {
-            e.target.closest('.link-wrap').nextSibling.classList.remove('open');
+            e.target.parentElement.nextSibling.classList.remove('open');
 
             this.setState({
                 isDropdownOpen: false
@@ -77,7 +78,7 @@ class Header extends React.Component {
         } 
 
         else {
-            e.target.closest('.dropdown').classList.remove('open');
+            e.target.parentElement.parentElement.parentElement.classList.remove('open');
 
             this.setState({
                 isDropdownOpen: false
