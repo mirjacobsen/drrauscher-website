@@ -1,13 +1,15 @@
 @require './_variables.styl'
 
 .footer
-	background lightGreen
+	// background lightGreen
+	background pink
 	display flex
 	justify-content space-around
 	flex-wrap wrap
 	padding 6vw
 	width 100%
 	order 20
+	color white
 	
 	&__navigation
 		order 1
@@ -32,6 +34,9 @@
 			&__item
 				display flex
 				justify-content space-between
+				
+				&__title
+					font-family playfair
 		
 	&__map
 		order 10
@@ -41,8 +46,7 @@
 		font-size 4vw
 	
 	.navigation__link
-		color white
-		font-family playfair
+		padding 0
 		
 	.dropdown
 		background-color transparent
@@ -64,6 +68,23 @@
 	svg
 		width 130%
 		margin-left -15%
+		
+.copyright
+	background black
+	display flex
+	justify-content space-between
+	width 100%
+	color lightPink
+	font-size 2vw
+	padding 1vw 2vw
+	font-weight 300
+	
+	&__link
+		text-decoration none
+		
+		&:hover
+			text-decoration underline
+		
 	
 // TODO get pip to work on scroll	
 // .pip
@@ -73,20 +94,86 @@
 // 	&.scrolledTo
 // 		transform translate(0,0)
 
+
+@media all and (min-width: 767px) 
+
+	.footer
+		.navigation__list
+			font-size 3vw
+
 @media all and (min-width: 980px)
 	.footer
 		flex-wrap nowrap
+		
+		.__bdS5YAT__pip
+			transform translateY(-10px)
+			transition all .35s cubic-bezier(0.68, -0.55, 0.27, 1.55)
 		
 		svg,
 		&__map
 			width 35vw
 			margin-left -8vw
+			order 1
 			
-		.navigation__link:hover
-			text-decoration underline
+			&:hover
+				.__bdS5YAT__pip
+					transform translateY(0)
+			
+		.navigation__link
+			font-family playfair
+			
+			&:after
+				transform translateY(0) 
+				transition all .25s ease-in-out
+			
+			&:hover:after
+					background white
+					height 1px
+
+			// Dropdown titles of sections that aren't actually links					
+			&--dropdown:after
+				height 0
+				color transparent
+					
+			&--dropdown:hover:after
+				height 0
+				color transparent
+				
+		.sub-navigation
+			.navigation__link
+				font-family montserrat
+				font-weight: 200;
 			
 		&__navigation
 			border-bottom 0
+			order 10
 			
+		.navigation__list
+			font-size 1.5vw
+			margin-top 0
+			
+			&-item
+				line-height 1.75
+			
+			&.sub-navigation
+				margin-left 3vw
+							
 		&__contact
 			padding-bottom 0
+			order 5
+			
+	.copyright
+		font-size 1.5vw
+		font-weight 100
+		
+@media all and (min-width: 1200px)
+
+	.footer
+		.navigation__list
+			font-size 16px
+			
+			&.sub-navigation
+				margin-left 10px
+				
+	.copyright
+		font-size 16px

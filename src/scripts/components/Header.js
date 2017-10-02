@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom';
 import DataStore from 'flux/stores/DataStore.js';
 import Dropdown   from 'components/Dropdown.js';
+import NavigationLink   from 'components/NavigationLink.js';
 import '../../css/style.css';
 
 class Header extends React.Component {
@@ -10,17 +11,26 @@ class Header extends React.Component {
         this.toggleNavigation = this.toggleNavigation.bind(this);
         this.toggleDropdown = this.toggleDropdown.bind(this);
         this.hasDropdownChildren = this.hasDropdownChildren.bind(this);
-        this.mobileDropdownOpen = this.mobileDropdownOpen.bind(this);
+        this.toggleDropdownFromDropdown = this.toggleDropdownFromDropdown.bind(this);
 
         //get Initial state
         this.state= {
           isNavigationOpen: false,
           navigationButtonText: 'Open',
-          isDropdownOpen: false
+          isDropdownOpen: false,
+          isSmallScreen: false
         }
-    } 
+    }
+
+    // Scroll to the top of the page when a new sub page loads
+    componentDidUpdate() {
+      window.scrollTo(0, 0)
+    }
+
+    // TODO: set isSmallScreen based on screen size
 
     toggleNavigation() {
+        // TODO: only run this on mobile
        if ( !this.state.isNavigationOpen ) {
           this.setState({
             isNavigationOpen: true,
@@ -30,32 +40,54 @@ class Header extends React.Component {
 
         else {
             this.setState({
-                isNavigationOpen: false
+                isNavigationOpen: false,
+                navigationButtonText: 'Open'
             })
         }
     }
 
     toggleDropdown(e) {
-        console.log(e.target);
+        // On Mobile, click link with dropdown to toggle open and closed
         e.preventDefault();
-       if ( !this.state.isDropdownOpen ) {
-          this.setState({
-            isDropdownOpen: true
-          })
-            e.target.nextSibling.classList.add('open');
+
+        if ( !this.state.isDropdownOpen ) {
+            e.target.closest('.link-wrap').nextSibling.classList.add('open');
+
+            //TODO: add a second class and delay the opacity transition?
+            this.setState({
+                isDropdownOpen: true
+            })
+            
         } 
 
         else {
+            e.target.closest('.link-wrap').nextSibling.classList.remove('open');
+
             this.setState({
                 isDropdownOpen: false
             })
-            e.target.nextSibling.classList.remove('open');
+        }
+    }
+
+    toggleDropdownFromDropdown(e) {
+        // When the dropdown is open and a link is clicked inside it, close the dropdown before opening page
+
+        if ( !this.state.isDropdownOpen ) {
+            return null; 
+        } 
+
+        else {
+            e.target.closest('.dropdown').classList.remove('open');
+
+            this.setState({
+                isDropdownOpen: false
+            })
         }
     }
 
     hasDropdownChildren(page) {
         // TODO: figure out a more reusable way to do this
-        const noChildren = page.id == 7 || page.id == 25 || page.id == 27;
+        const noChildren = page.id == 36 || page.id == 58 || page.id == 30;
 
         if (!noChildren) {
             return true;
@@ -63,30 +95,6 @@ class Header extends React.Component {
             return false;
         }
     } 
-
-    hasDropdown(page) {
-        // TODO: figure out a more reusable way to do this
-        const noChildren = page.id == 7 || page.id == 25 || page.id == 27;
-
-        if (!noChildren) {
-            return true;
-        } else {
-            return false;
-        }
-    } 
-
-    mobileDropdownOpen(e) {
-        e.preventDefault();
-        console.log(e);
-        const hasDropdown = e.target.classList.contains('navigation__link--dropdown');
-        // console.log(hasDropdown);
-
-        if (hasDropdown) {
-            // add open class to dropdown
-        } else {
-            // go to the target
-        }
-    }
    
     render() {
         let allPages = DataStore.getAllPages();
@@ -94,13 +102,12 @@ class Header extends React.Component {
 
         let pageBanners = DataStore.getAllPages();
 
-       
-
         return (
             <header className="header">
                 <h1 className="header__title">
                     <Link to="/" className="header__link">Dr. Alexa Rauscher, ND BSc </Link>
                 </h1>
+                <a href="tel:604-987-1418" className="header__phone">604-987-1418</a>
 
                 <button 
                     className={this.state.isNavigationOpen ? 'navigation-button open' : 'navigation-button'} 
@@ -114,15 +121,8 @@ class Header extends React.Component {
                             if(page.slug !== 'home' && page.parent == 0){
                                return(
                                     <li className="navigation__list-item" key={page.id} id={page.id}>
-                                        <Link
-                                            to={`/${page.slug}`}
-                                            className=
-                                            {this.hasDropdownChildren(page) ? 'navigation__link navigation__link--dropdown' : 'navigation__link'}
-                                            onClick={(e) => this.toggleDropdown(e)} 
-                                        >
-                                            {page.title.rendered}
-                                        </Link>
-                                        <Dropdown id={page.id} key={page.id} hasDropdownChildren={ this.hasDropdownChildren(page)} isDropdownOpen={this.state.isDropdownOpen} />
+                                        <NavigationLink page={page} hasDropdownChildren={this.hasDropdownChildren} toggleDropdown={this.toggleDropdown} toggleNavigation={this.toggleNavigation}/>
+                                        <Dropdown id={page.id} key={page.id} hasDropdownChildren={ this.hasDropdownChildren(page)} isDropdownOpen={this.state.isDropdownOpen} toggleNavigation={this.toggleNavigation} toggleDropdown={this.toggleDropdownFromDropdown} />
                                     </li>      
                                 )                     
                            }

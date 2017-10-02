@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import DataStore from 'flux/stores/DataStore.js';
 
-class Dropdown extends React.Component { 
+class SubNavItems extends React.Component { 
 
      constructor() {
         super();
@@ -14,15 +14,15 @@ class Dropdown extends React.Component {
    
     render() {
         const allPages = DataStore.getAllPages();
-        const { id, hasDropdownChildren, isDropdownOpen, toggleDropdown} = this.props;
+        const { id, hasDropdownChildren} = this.props;
 
         if (!hasDropdownChildren) {
             return null;
         } else {
 
             return (
-                <div className='dropdown'>
-                    <ul className="navigation__list" id={id}>
+
+                    <ul className="navigation__list sub-navigation" id={id}>
 
                         {allPages.map((page) => {
                             if(page.parent == id){
@@ -31,8 +31,6 @@ class Dropdown extends React.Component {
                                         <Link
                                             to={`/${page.slug}`}
                                             className="navigation__link"
-                                            onClick={(e) => {this.props.toggleNavigation(); this.props.toggleDropdown(e);}}
-
                                         >
                                             {page.title.rendered}
                                         </Link>
@@ -41,11 +39,10 @@ class Dropdown extends React.Component {
                             }
                         })}
                     </ul>
-                </div>
             );
         }
 
     }
 }
 
-export default Dropdown;
+export default SubNavItems;

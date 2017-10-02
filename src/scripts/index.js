@@ -15,6 +15,7 @@ import Testimonials               from 'components/Testimonials.js';
 import TBM               from 'components/TBM.js';
 import Header                   from 'components/Header.js';
 import Footer                   from 'components/Footer.js';
+import Copyright                   from 'components/Copyright.js';
 
 import {
     BrowserRouter as Router,
@@ -27,19 +28,31 @@ import {
 
 class AppInitializer {
 
+    componentDidMount () {
+      window.scrollTo(0, 0)
+    }
+
     templates = {
         'about-dr-alexa-rauscher': About,
         'contact': Contact,
         'conditions-and-treatments': ConditionsAndTreatments,
         'conditions': Conditions,
-        'treatment-modalities': Treatments,
+        'treatments': Treatments,
         'about-naturopathic-medicine': AboutNaturopathicMedicine,
         'naturopathic-philosophies': NaturopathicPhilosophies,
         'faq': Faq,
         'bioenergetics-bie': Bioenergetics,
         'total-body-modification-tbm': TBM,
         'testimonials': Testimonials,
+    }
 
+    getParentSlugForUrl() {
+        return data.pages.map((page, i) => {
+            console.log(page);
+            return (
+                <div>`/${page.slug}`</div>
+            )
+        })
     }
 
     buildRoutes(data){
@@ -69,6 +82,7 @@ class AppInitializer {
                             <Route render={() => { return <Redirect to="/" /> }} />
                         </Switch> 
                         <Footer />
+                        <Copyright />
                     </div>
                 </Router>
 

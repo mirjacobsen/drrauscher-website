@@ -8,7 +8,7 @@
 .columns
 	display flex
 	flex-wrap wrap
-	justify-content space-around
+	justify-content center
 	margin-bottom 8vw
 	max-width 1000px
 	width 90%
@@ -18,7 +18,11 @@
 	max-width 100%
 	width 90%
 	
+	
 @media all and (min-width: 980px)
+
+	.columns
+		justify-content space-around
 
 	.column-3 
 		max-width 300px
@@ -27,3 +31,19 @@
 	.column-2
 		max-width 425px
 		width 48%
+	
+	.show-mobile
+		display none
+		
+@media all and (min-width: 1200px)
+
+	.columns
+		justify-content space-between
+
+	// .column-3 
+	// 	max-width 300px
+	// 	width 31%
+	
+	.column-2
+		max-width initial
+		width 46%

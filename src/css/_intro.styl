@@ -6,6 +6,7 @@
 	padding 5vw
 	width 100%
 	order 5
+	margin-bottom 10vh
 	
 	&__text
 		color white
@@ -33,9 +34,15 @@
 	&__link
 		color white
 		
+.headshot
+	display none
+		
 @media all and (min-width: 980px)
 
 	.intro
+		order 15
+		margin-bottom 0
+		
 		&__text
 			font-size 1.5vw
 			line-height 1.75
@@ -47,3 +54,26 @@
 				
 		&__name
 			font-size 1.75vw
+			
+	.headshot
+		order 17
+		display flex
+		align-items flex-start
+
+		.image
+			padding-bottom 0
+			
+@media all and (min-width: 980px)
+
+	.intro
+			
+			&__text
+				font-size 18px
+				
+				&--large
+					font-size 24px
+					padding-bottom 16px
+					padding-top 0
+					
+			&__name
+				font-size 20px
