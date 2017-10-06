@@ -42,6 +42,10 @@ class DataActions {
         return true;
     }
 
+    getPageUrl(page) {
+        return page.link.split('com/api2')[1]
+    }
+
     // This returnes an object with Pages and Posts data together
     // The Alt Store will listen for this method to fire and will store the returned data
     getSuccess(payload){

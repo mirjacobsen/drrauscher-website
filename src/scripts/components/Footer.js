@@ -2,11 +2,12 @@ import {Link} from 'react-router-dom';
 import InlineSVG from 'svg-inline-react';
 import DataStore from 'flux/stores/DataStore.js';
 import Dropdown   from 'components/Dropdown.js';
-import SubNavItems   from 'components/SubNavItems.js';
+import FooterSubNavItems   from 'components/FooterSubNavItems.js';
 import FooterNavigationLink   from 'components/FooterNavigationLink.js';
 
 
 class Footer extends React.Component {
+
 
     // constructor() {
     //     super();
@@ -24,7 +25,7 @@ class Footer extends React.Component {
     //         return 'column-3'
     //     }
     // }
-        hasDropdownChildren(page) {
+    hasDropdownChildren(page) {
         // TODO: figure out a more reusable way to do this
          const noChildren = page.id == 36 || page.id == 58 || page.id == 30;
 
@@ -38,6 +39,8 @@ class Footer extends React.Component {
     render() {
         let allPages = DataStore.getAllPages();
         allPages = _.sortBy(allPages, [function(page) { return page.menu_order; }]); // Sort pages by order
+
+        const { getPageUrl } =  this.props;
 
         return (
             <footer className="footer">
@@ -74,9 +77,20 @@ class Footer extends React.Component {
                             if(page.slug !== 'home' && page.parent == 0){
                                return(
                                     <li className="navigation__list-item" key={page.id}>
-                                        <FooterNavigationLink page={page} hasDropdownChildren={this.hasDropdownChildren} toggleDropdown={this.toggleDropdown} toggleNavigation={this.toggleNavigation}/>
+                                        <FooterNavigationLink 
+                                            page={page}
+                                            hasDropdownChildren={this.hasDropdownChildren}
+                                            toggleDropdown={this.toggleDropdown}
+                                            toggleNavigation={this.toggleNavigation}
+                                            getPageUrl={getPageUrl}
+                                        />
                                      
-                                        <SubNavItems id={page.id} key={page.id} hasDropdownChildren={ this.hasDropdownChildren(page)} />
+                                        <FooterSubNavItems 
+                                            id={page.id} 
+                                            key={page.id} 
+                                            hasDropdownChildren={this.hasDropdownChildren(page)}
+                                            getPageUrl={getPageUrl}
+                                        />
                                     </li>      
                                 )                     
                            }

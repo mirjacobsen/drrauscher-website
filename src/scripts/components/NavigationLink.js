@@ -6,13 +6,13 @@ class NavigationLink extends React.Component {
     
     render() {
 
-        const {page, hasDropdownChildren, toggleDropdown} = this.props;
+        const {page, hasDropdownChildren, toggleDropdown, getPageUrl} = this.props;
         let link;
         
         if (hasDropdownChildren(page)) {
             link = 
             <Link
-                to={`/${page.slug}`}
+                to={getPageUrl(page)}
                 className='navigation__link navigation__link--dropdown'
                 onClick={(e) => this.props.toggleDropdown(e)} 
             >
@@ -23,7 +23,7 @@ class NavigationLink extends React.Component {
         } else {
             link =
              <Link
-                to={`/${page.slug}`}
+                to={getPageUrl(page)}
                 className='navigation__link'
                 onClick={() => this.props.toggleNavigation()}
             >

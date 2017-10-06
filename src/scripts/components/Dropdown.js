@@ -14,7 +14,7 @@ class Dropdown extends React.Component {
    
     render() {
         const allPages = DataStore.getAllPages();
-        const { id, hasDropdownChildren, isDropdownOpen, toggleDropdown} = this.props;
+        const { id, hasDropdownChildren, isDropdownOpen, toggleDropdown, getPageUrl} = this.props;
 
         if (!hasDropdownChildren) {
             return null;
@@ -29,7 +29,7 @@ class Dropdown extends React.Component {
                                return(
                                     <li className="navigation__list-item" key={page.id}>
                                         <Link
-                                            to={`/${page.slug}`}
+                                            to={getPageUrl(page)}
                                             className="navigation__link"
                                             onClick={(e) => {this.props.toggleNavigation(); this.props.toggleDropdown(e);}}
 
