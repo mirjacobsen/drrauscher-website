@@ -28,6 +28,7 @@ import {
 
 class AppInitializer {
 
+    // scroll to top when clicking on a nav link not at the top of the page
     componentDidMount () {
       window.scrollTo(0, 0)
     }
@@ -46,27 +47,18 @@ class AppInitializer {
         'testimonials': Testimonials,
     }
 
-    getParentSlugForUrl() {
-        //TODO: add this in for URL
-        return data.pages.map((page, i) => {
-            console.log(page);
-            return (
-                <div>`/${page.slug}`</div>
-            )
-        })
-    }
-
 
     buildRoutes(data){
         return data.pages.map((page, i) => {
-            return(
-                <Route
-                    key={i}
-                    component={this.templates[page.slug]}
-                    path={`/${page.slug}`}
-                    exact
-                /> 
-            )
+
+                return(
+                    <Route
+                        key={i}
+                        component={this.templates[page.slug]}
+                        path={DataActions.getPageUrl(page)}
+                        exact
+                    /> 
+                )
         })     
     }
 
@@ -75,7 +67,7 @@ class AppInitializer {
             render(
                 <Router>
                     <div>
-                        <Header />
+                        <Header getPageUrl={DataActions.getPageUrl} />
 
                         <Switch>
                             <Route path="/" component={ Home } exact />
@@ -83,7 +75,7 @@ class AppInitializer {
                             {this.buildRoutes(response)}
                             <Route render={() => { return <Redirect to="/" /> }} />
                         </Switch> 
-                        <Footer />
+                        <Footer getPageUrl={DataActions.getPageUrl}/>
                         <Copyright />
                     </div>
                 </Router>

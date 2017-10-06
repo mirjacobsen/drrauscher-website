@@ -27,7 +27,6 @@ class Header extends React.Component {
       window.scrollTo(0, 0)
     }
 
-
     // TODO: set isSmallScreen based on screen size
 
     toggleNavigation() {
@@ -102,6 +101,7 @@ class Header extends React.Component {
         allPages = _.sortBy(allPages, [function(page) { return page.menu_order; }]); // Sort pages by order
 
         let pageBanners = DataStore.getAllPages();
+        const { getPageUrl } =  this.props;
 
         return (
             <header className="header">
@@ -121,9 +121,27 @@ class Header extends React.Component {
                         {allPages.map((page) => {
                             if(page.slug !== 'home' && page.parent == 0){
                                return(
-                                    <li className="navigation__list-item" key={page.id} id={page.id}>
-                                        <NavigationLink page={page} hasDropdownChildren={this.hasDropdownChildren} toggleDropdown={this.toggleDropdown} toggleNavigation={this.toggleNavigation}/>
-                                        <Dropdown id={page.id} key={page.id} hasDropdownChildren={ this.hasDropdownChildren(page)} isDropdownOpen={this.state.isDropdownOpen} toggleNavigation={this.toggleNavigation} toggleDropdown={this.toggleDropdownFromDropdown} />
+                                    <li 
+                                        className="navigation__list-item" 
+                                        key={page.id} 
+                                        id={page.id}
+                                    >
+                                        <NavigationLink 
+                                            page={page}
+                                            hasDropdownChildren={this.hasDropdownChildren}
+                                            toggleDropdown={this.toggleDropdown}
+                                            toggleNavigation={this.toggleNavigation}
+                                            getPageUrl={getPageUrl}
+                                        />
+                                        <Dropdown 
+                                            id={page.id} 
+                                            key={page.id} 
+                                            hasDropdownChildren={ this.hasDropdownChildren(page)}
+                                            isDropdownOpen={this.state.isDropdownOpen}
+                                            toggleNavigation={this.toggleNavigation}
+                                            toggleDropdown={this.toggleDropdownFromDropdown}
+                                            getPageUrl={getPageUrl}
+                                        />
                                     </li>      
                                 )                     
                            }
