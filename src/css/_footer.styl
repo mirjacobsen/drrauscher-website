@@ -1,7 +1,6 @@
 @require './_variables.styl'
 
 .footer
-	// background lightGreen
 	background pink
 	display flex
 	justify-content space-between
@@ -66,39 +65,16 @@
 		.navigation__link
 			font-family montserrat
 			font-size 3.5vw
-			text-transform: initial;
-	
-	svg
+			text-transform initial
+			
+	/* TODO: Why can't I use a class - 
+		the SVG inliner seems to be messing up the class name, 
+		but ID's are okay. */
+	#map
 		width 130%
 		margin-left -15%
 		height 100vw // for IE
 		
-.copyright
-	background black
-	display flex
-	justify-content space-between
-	width 100%
-	color lightPink
-	font-size 2vw
-	padding 1vw 2vw
-	font-weight 300
-	
-	&__link
-		text-decoration none
-		
-		&:hover
-			text-decoration underline
-		
-	
-// TODO get pip to work on scroll	
-// .pip
-// 	transform translate(0,-25px)
-// 	transition transform .35s ease
-	
-// 	&.scrolledTo
-// 		transform translate(0,0)
-
-
 @media all and (min-width: 767px) 
 
 	.footer
@@ -112,23 +88,22 @@
 		
 		.column-3
 			max-width none
-		
-		
-		.__bdS5YAT__pip
-			transform translateY(-10px)
-			transition all .35s cubic-bezier(0.68, -0.55, 0.27, 1.55)
 			
-		svg
+		#pip
+			transform translateY(-10px)
+			transition all .35s bounceTransition
+			
+		#map
 			height auto
 		
-		svg,
+		#map,
 		&__map
 			width 35vw
 			margin-left -5vw
 			order 1
 			
 			&:hover
-				.__bdS5YAT__pip
+				#pip
 					transform translateY(0)
 			
 		.navigation__link
@@ -139,10 +114,10 @@
 				transition all .25s ease-in-out
 			
 			&:hover:after
-					background white
-					height 1px
+				background white
+				height 1px
 
-			// Dropdown titles of sections that aren't actually links					
+			// Remove hover effect for dropdown titles of sections that aren't actually links					
 			&--dropdown:after
 				height 0
 				color transparent
@@ -178,10 +153,6 @@
 			.subtitle
 				font-weight 200
 				margin-top 0
-			
-	.copyright
-		font-size 1.5vw
-		font-weight 100
 		
 @media all and (min-width: 1200px)
 
@@ -193,6 +164,3 @@
 		
 		.navigation__list
 			font-size 16px
-				
-	.copyright
-		font-size 16px

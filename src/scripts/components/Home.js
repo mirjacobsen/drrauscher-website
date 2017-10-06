@@ -13,17 +13,17 @@ class Home extends React.Component {
                 </div>
 
                 <div className="nav-blocks">
-                    <Link to='/about-dr-alexa-rauscher' className="nav-block">
-                        <img src="//api2.alexarauschernaturopath.com/api2/wp-content/uploads/2017/09/Detox-square.jpg" alt="Dr. Alexa Rauscher" className="nav-block__image"/>
-                        <span className="nav-block__text">Dr. Alexa Rauscher</span>
+                    <Link to='/about-dr-alexa-rauscher' className="nav-blocks__block">
+                        <img src="//api2.alexarauschernaturopath.com/api2/wp-content/uploads/2017/09/Detox-square.jpg" alt="Dr. Alexa Rauscher" className="nav-blocks__image"/>
+                        <span className="nav-blocks__text">Dr. Alexa Rauscher</span>
                     </Link>
-                    <Link to='/about-naturopathic-medicine/naturopathic-philosophies' className="nav-block">
-                        <img src="//api2.alexarauschernaturopath.com/api2/wp-content/uploads/2017/09/Supplements-square.jpg" alt="About Naturopathic Medicine"className="nav-block__image"/>
-                         <span className="nav-block__text">Naturopathic Philosophies</span>
+                    <Link to='/about-naturopathic-medicine/naturopathic-philosophies' className="nav-blocks__block">
+                        <img src="//api2.alexarauschernaturopath.com/api2/wp-content/uploads/2017/09/Supplements-square.jpg" alt="About Naturopathic Medicine"className="nav-blocks__image"/>
+                         <span className="nav-blocks__text">Naturopathic Philosophies</span>
                     </Link>
-                    <Link to='/conditions-and-treatments/treatments' className="nav-block">
-                        <img src="//api2.alexarauschernaturopath.com/api2/wp-content/uploads/2017/09/homeopathy-square.jpg" alt="Conditions and Treatments"className="nav-block__image"/>
-                        <span className="nav-block__text">Treatment Modalities</span>
+                    <Link to='/conditions-and-treatments/treatments' className="nav-blocks__block">
+                        <img src="//api2.alexarauschernaturopath.com/api2/wp-content/uploads/2017/09/homeopathy-square.jpg" alt="Conditions and Treatments"className="nav-blocks__image"/>
+                        <span className="nav-blocks__text">Treatment Modalities</span>
                     </Link>
                 </div>
                 
