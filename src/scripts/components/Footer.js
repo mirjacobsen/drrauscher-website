@@ -46,13 +46,15 @@ class Footer extends React.Component {
                 </a>
                 <div className="column-3 footer__contact">
 
-                 <h3 className="show-mobile">Office Hours:</h3>
+                 <h3 className="show-mobile">Office Hours</h3>
                     <ul className="list show-mobile">
                         <li className="list__item"><span className="list__item__title">Tuesday:</span> 11:00am-8:00pm</li>
                         <li className="list__item"><span className="list__item__title">Wednesday:</span> 9:00am-6:00pm</li>
                         <li className="list__item"><span className="list__item__title">Friday:</span> 9:00am-6:00pm</li>
                         <li className="list__item"><span className="list__item__title">Saturday</span> 9:00am-4:00pm</li>
                     </ul>
+
+                    <h3 className="subtitle">Contact</h3>
                    
                     <p className="text">
                         Lonsdale Naturopathic Clinic <br />

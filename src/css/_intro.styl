@@ -3,7 +3,7 @@
 	display flex
 	flex-wrap wrap
 	justify-content space-around
-	padding 5vw
+	padding 5vw 5vw 10vw
 	width 100%
 	order 5
 	margin-bottom 10vh
@@ -35,13 +35,37 @@
 		color white
 		
 .headshot
-	display none
-		
+	order 17
+	display flex
+	align-items flex-start
+	position relative
+	// margin-top -20vw
+	// margin-top -100px
+	margin-top -15vh
+	
+	.image
+		display none
+	
+	i 
+		position absolute
+		margin-top -19vw
+		right 4vw
+		z-index 1000000
+		transform rotate(-5deg)
+	
+#signature
+	width 50vw
+	height 25vw
+
 @media all and (min-width: 980px)
 
 	.intro
 		order 15
 		margin-bottom 0
+		// padding-bottom 0
+		
+		.columns
+			margin-bottom 3vw
 		
 		&__text
 			font-size 1.5vw
@@ -56,24 +80,35 @@
 			font-size 1.75vw
 			
 	.headshot
-		order 17
-		display flex
-		align-items flex-start
+		margin-top -6vh
 
 		.image
 			padding-bottom 0
+			display block
 			
-@media all and (min-width: 980px)
+	#signature
+		width 400px
+		height 200px
+			
+@media all and (min-width: 1200px)
 
 	.intro
+		padding-bottom 0
 			
-			&__text
-				font-size 18px
+		&__text
+			font-size 18px
+			
+			&--large
+				font-size 24px
+				padding-bottom 16px
+				padding-top 0
 				
-				&--large
-					font-size 24px
-					padding-bottom 16px
-					padding-top 0
-					
-			&__name
-				font-size 20px
+		&__name
+			font-size 20px
+				
+	.headshot
+		margin-top 0
+		
+		i
+			right 10vw
+				

@@ -4,12 +4,15 @@
 	// background lightGreen
 	background pink
 	display flex
-	justify-content space-around
+	justify-content space-between
 	flex-wrap wrap
 	padding 6vw
 	width 100%
 	order 20
 	color white
+	
+	.text 
+		font-weight: 200;
 	
 	&__navigation
 		order 1
@@ -105,6 +108,11 @@
 @media all and (min-width: 980px)
 	.footer
 		flex-wrap nowrap
+		padding 3vw
+		
+		.column-3
+			max-width none
+		
 		
 		.__bdS5YAT__pip
 			transform translateY(-10px)
@@ -116,7 +124,7 @@
 		svg,
 		&__map
 			width 35vw
-			margin-left -8vw
+			margin-left -5vw
 			order 1
 			
 			&:hover
@@ -160,11 +168,16 @@
 				line-height 1.75
 			
 			&.sub-navigation
-				margin-left 3vw
+				margin-left 10px
 							
 		&__contact
 			padding-bottom 0
 			order 5
+			padding-left 4vw
+			
+			.subtitle
+				font-weight 200
+				margin-top 0
 			
 	.copyright
 		font-size 1.5vw
@@ -173,11 +186,13 @@
 @media all and (min-width: 1200px)
 
 	.footer
+		justify-content space-around
+		
+		&__map
+			margin-left -10vw
+		
 		.navigation__list
 			font-size 16px
-			
-			&.sub-navigation
-				margin-left 10px
 				
 	.copyright
 		font-size 16px
