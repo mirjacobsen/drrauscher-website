@@ -1,0 +1,40 @@
+//Banner on all sub pages
+
+.page-banner
+	position relative
+	margin-bottom 6vw
+	width 100%
+	height 25vw
+	overflow hidden
+	
+	&__image
+		width 100%
+		height auto
+	
+	&:after
+		content ''
+		width 100%
+		height 100%
+		background-color rgba(0,0,0,.5)
+		position absolute
+		top 0
+		left 0
+	
+	&__title
+		color white
+		width 100%
+		text-align center
+		top 20%
+		left 0
+		font-family playfair
+		font-weight normal
+		text-transform capitalize
+		font-size 6vw
+		position absolute
+		z-index 10
+		
+@media all and (min-width: 980px)
+
+	.page-banner__title
+		top 60%
+		font-size 3vw

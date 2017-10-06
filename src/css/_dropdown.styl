@@ -1,0 +1,75 @@
+@require './_variables.styl'
+
+.dropdown
+	background-color darken(lightGreen, 20%)
+	max-height 0
+	opacity 0
+	position relative
+	top 0
+	transition all .5s ease
+	width 100%
+	z-index -1
+
+	&.open
+		max-height 1000px
+		opacity 1
+		z-index 1
+		
+		.navigation__list-item
+			transform translateX(0)
+	
+	.navigation
+		&__list
+			flex-direction column
+			padding-left 10vw
+			margin-top 0
+			
+			&-item
+				transform translateX(-100vw)
+				transition all 1s bounceTransition
+		
+		&__link
+			padding 1vw
+			display block
+			color white
+
+@media all and (min-width: 980px) 
+
+	.dropdown
+		box-shadow boxShadow
+		position absolute
+		top 35px
+		width 100%
+		background white
+		transition all .75s ease-in-out
+		
+		.open
+			max-height 400px
+			opacity 1
+			z-index 100
+			
+		.navigation__list
+			padding 0
+			
+			&-item 
+				transform translateX(0)
+				transition all .35s ease-in-out
+			
+				&:hover
+					background pink
+					
+					.navigation__link
+						color white
+
+						&:after
+							height 0
+						
+				
+		.navigation__link
+			padding 1vw
+			display block
+			color gray
+			transition all .35s ease-in-out
+			
+			&:after
+				height 0
